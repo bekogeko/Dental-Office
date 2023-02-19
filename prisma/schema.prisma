@@ -60,3 +60,131 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model StaticProsthesis {
+    id String @id @default(cuid())
+
+    // custom id used in physical world
+    workId         String
+    technicianNote String
+
+    doctorId String
+    doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+    type        StaticCrownType
+    patientName String
+    color       TeethColor[] // array of colors
+
+    // 1 - 8 teeth on the upper-right jaw  
+    tooth_11 TeethConstruction
+    tooth_12 TeethConstruction
+    tooth_13 TeethConstruction
+    tooth_14 TeethConstruction
+    tooth_15 TeethConstruction
+    tooth_16 TeethConstruction
+    tooth_17 TeethConstruction
+    tooth_18 TeethConstruction
+
+    // 1-8 teeth on the upper-left jaw
+    tooth_21 TeethConstruction
+    tooth_22 TeethConstruction
+    tooth_23 TeethConstruction
+    tooth_24 TeethConstruction
+    tooth_25 TeethConstruction
+    tooth_26 TeethConstruction
+    tooth_27 TeethConstruction
+    tooth_28 TeethConstruction
+
+    // 1-8 teeth on the lower-right jaw
+    tooth_31 TeethConstruction
+    tooth_32 TeethConstruction
+    tooth_33 TeethConstruction
+    tooth_34 TeethConstruction
+    tooth_35 TeethConstruction
+    tooth_36 TeethConstruction
+    tooth_37 TeethConstruction
+    tooth_38 TeethConstruction
+
+    // 1-8 teeth on the lower-left jaw
+    tooth_41 TeethConstruction
+    tooth_42 TeethConstruction
+    tooth_43 TeethConstruction
+    tooth_44 TeethConstruction
+    tooth_45 TeethConstruction
+    tooth_46 TeethConstruction
+    tooth_47 TeethConstruction
+    tooth_48 TeethConstruction
+
+    isCompleted Boolean   @default(false)
+    completedAt DateTime?
+    isPaid      Boolean   @default(false)
+    paidAt      DateTime?
+
+    // set default value to current year 
+    // i.e. 2023
+    creationYear Int      @default(dbgenerated("date_part('year', CURRENT_DATE)"))
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+
+    @@unique([creationYear, workId])
+}
+
+model Doctor {
+    id String @id @default(cuid())
+
+    name    String
+    address String?
+    phone   String?
+
+    // billNumber String @default("unset")
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    StaticProsthesis StaticProsthesis[]
+}
+
+enum StaticCrownType {
+    METAL_CERAMIC
+
+    EMAX_LAMINATE
+    EMAX_ON_ZIRCONIA
+
+    MARYLAND_CERAMIC_BRIDGE
+
+    TEMPORARY_CROWN
+
+    FULL_METAL_CROWN
+    PIVOT_METAL
+    ZIRCONIA_CROWN
+}
+
+enum TeethConstruction {
+    CROWN
+    BRIDGE
+    INLAY
+    ONLAY
+}
+
+enum TeethColor {
+    VITA_A1
+    VITA_A2
+    VITA_A3
+    VITA_A3_5
+    VITA_A4
+    VITA_B1
+    VITA_B2
+    VITA_B3
+    VITA_B4
+    VITA_C1
+    VITA_C2
+    VITA_C3
+    VITA_C4
+    VITA_D2
+    VITA_D3
+    VITA_D4
+
+    VITA_OM_1
+    VITA_OM_2
+    VITA_OM_3
+}
