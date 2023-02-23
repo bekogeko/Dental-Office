@@ -71,49 +71,11 @@ model StaticProsthesis {
     doctorId String
     doctor   Doctor @relation(fields: [doctorId], references: [id])
 
-    type        StaticCrownType
     patientName String
     color       TeethColor[] // array of colors
 
-    // 1 - 8 teeth on the upper-right jaw  
-    tooth_11 TeethConstruction
-    tooth_12 TeethConstruction
-    tooth_13 TeethConstruction
-    tooth_14 TeethConstruction
-    tooth_15 TeethConstruction
-    tooth_16 TeethConstruction
-    tooth_17 TeethConstruction
-    tooth_18 TeethConstruction
-
-    // 1-8 teeth on the upper-left jaw
-    tooth_21 TeethConstruction
-    tooth_22 TeethConstruction
-    tooth_23 TeethConstruction
-    tooth_24 TeethConstruction
-    tooth_25 TeethConstruction
-    tooth_26 TeethConstruction
-    tooth_27 TeethConstruction
-    tooth_28 TeethConstruction
-
-    // 1-8 teeth on the lower-right jaw
-    tooth_31 TeethConstruction
-    tooth_32 TeethConstruction
-    tooth_33 TeethConstruction
-    tooth_34 TeethConstruction
-    tooth_35 TeethConstruction
-    tooth_36 TeethConstruction
-    tooth_37 TeethConstruction
-    tooth_38 TeethConstruction
-
-    // 1-8 teeth on the lower-left jaw
-    tooth_41 TeethConstruction
-    tooth_42 TeethConstruction
-    tooth_43 TeethConstruction
-    tooth_44 TeethConstruction
-    tooth_45 TeethConstruction
-    tooth_46 TeethConstruction
-    tooth_47 TeethConstruction
-    tooth_48 TeethConstruction
+    // array of teeth
+    teeth Teeth[]
 
     isCompleted Boolean   @default(false)
     completedAt DateTime?
@@ -127,6 +89,18 @@ model StaticProsthesis {
     updatedAt    DateTime @updatedAt
 
     @@unique([creationYear, workId])
+}
+
+model Teeth {
+    id String @id @default(cuid())
+
+    staticProsthesisId String
+    staticProsthesis   StaticProsthesis @relation(fields: [staticProsthesisId], references: [id])
+
+    number    Int[]
+    type      TeethConstruction[]
+    crownType StaticCrownType[]
+    color     TeethColor[]
 }
 
 model Doctor {
@@ -161,7 +135,7 @@ enum StaticCrownType {
 
 enum TeethConstruction {
     CROWN
-    BRIDGE
+    BRIDGE_BODY
     INLAY
     ONLAY
 }

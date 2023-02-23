@@ -27,7 +27,7 @@ const DashboardLayout: NextPage<{
 
   return (
     <div className="flex h-screen ">
-      <div className="flex w-48 flex-shrink-0 flex-col gap-y-2 bg-gray-800 px-4 pt-12 text-white">
+      <div className="flex w-48 flex-shrink-0 flex-col gap-y-2 bg-gray-800 px-4 pt-16 text-white">
         <Link
           href={"/dashboard"}
           className={`rounded p-2 ${
