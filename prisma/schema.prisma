@@ -10,12 +10,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -68,14 +62,14 @@ model StaticProsthesis {
     workId         String
     technicianNote String
 
-    doctorId String
-    doctor   Doctor @relation(fields: [doctorId], references: [id])
-
-    patientName String
-    color       TeethColor[] // array of colors
+    doctorId  String
+    doctor    Doctor  @relation(fields: [doctorId], references: [id])
+    patientId String
+    patient   Patient @relation(fields: [patientId], references: [id])
 
     // array of teeth
-    teeth Teeth[]
+    teethTypes StaticCrownType[]
+    teethColor TeethColor[]
 
     isCompleted Boolean   @default(false)
     completedAt DateTime?
@@ -89,18 +83,6 @@ model StaticProsthesis {
     updatedAt    DateTime @updatedAt
 
     @@unique([creationYear, workId])
-}
-
-model Teeth {
-    id String @id @default(cuid())
-
-    staticProsthesisId String
-    staticProsthesis   StaticProsthesis @relation(fields: [staticProsthesisId], references: [id])
-
-    number    Int[]
-    type      TeethConstruction[]
-    crownType StaticCrownType[]
-    color     TeethColor[]
 }
 
 model Doctor {
@@ -118,26 +100,31 @@ model Doctor {
     StaticProsthesis StaticProsthesis[]
 }
 
-enum StaticCrownType {
-    METAL_CERAMIC
+model Patient {
+    id String @id @default(cuid())
 
-    EMAX_LAMINATE
-    EMAX_ON_ZIRCONIA
+    name String
+    age  Int?
 
-    MARYLAND_CERAMIC_BRIDGE
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
-    TEMPORARY_CROWN
-
-    FULL_METAL_CROWN
-    PIVOT_METAL
-    ZIRCONIA_CROWN
+    StaticProsthesis StaticProsthesis[]
 }
 
-enum TeethConstruction {
-    CROWN
-    BRIDGE_BODY
+enum StaticCrownType {
+    METAL_CERAMIC
+    ZIRCONIUM
+    LAMINATE
+    TEMPORARY
+    REPAIR
+
+    PIVO_METAL
+    PLACEHOLDER
+    BODY
     INLAY
     ONLAY
+    COMPOSITE
 }
 
 enum TeethColor {
