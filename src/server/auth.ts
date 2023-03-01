@@ -21,7 +21,7 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
@@ -30,6 +30,8 @@ declare module "next-auth" {
   //   // role: UserRole;
   // }
 }
+
+type UserRole = "USER" | "ADMIN";
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
@@ -41,7 +43,13 @@ export const authOptions: NextAuthOptions = {
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
+        session.user.role = "USER";
         // session.user.role = user.role; <-- put other properties on the session here
+
+        // check if user's email is in the admin list
+        if (env.ADMIN_EMAILS.includes(session.user.email)) {
+          session.user.role = "ADMIN";
+        }
       }
       return session;
     },

@@ -21,6 +21,9 @@ const server = z.object({
   // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
+
+  // Admin emails
+  ADMIN_EMAILS: z.array(z.string().email()).min(1).max(3),
 });
 
 /**
@@ -45,6 +48,9 @@ const processEnv = {
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+
+  // Admin emails
+  ADMIN_EMAILS: JSON.parse(process.env.ADMIN_EMAILS || ""),
 };
 
 // Don't touch the part below
