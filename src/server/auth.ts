@@ -47,9 +47,9 @@ export const authOptions: NextAuthOptions = {
         // session.user.role = user.role; <-- put other properties on the session here
 
         // check if user's email is in the admin list
-        if (env.ADMIN_EMAILS.includes(session.user.email)) {
-          session.user.role = "ADMIN";
-        }
+        // if (env.ADMIN_EMAILS.includes(session.user.email)) {
+        //   session.user.role = "ADMIN";
+        // }
       }
       return session;
     },
