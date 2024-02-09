@@ -23,7 +23,7 @@ const server = z.object({
   GOOGLE_CLIENT_SECRET: z.string(),
 
   // Admin emails
-  ADMIN_EMAILS: z.array(z.string().email()).min(1).max(3),
+  //  ADMIN_EMAILS: z.array(z.string().email()).min(1).max(3),
 });
 
 /**
@@ -50,7 +50,7 @@ const processEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 
   // Admin emails
-  ADMIN_EMAILS: JSON.parse(process.env.ADMIN_EMAILS || ""),
+  //  ADMIN_EMAILS: JSON.parse(process.env.ADMIN_EMAILS || ""),
 };
 
 // Don't touch the part below
