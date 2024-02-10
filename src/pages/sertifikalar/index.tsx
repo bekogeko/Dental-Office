@@ -27,7 +27,7 @@ const Diploma = [
 function Sertifikalar() {
   return (
     <div>
-      <Hero description="" title="Sertifika" />
+      <Hero description="" title="Sertifika" active={true} />
       <div className="mx-auto my-36 flex     max-w-7xl flex-col gap-y-10 divide-y ">
         {Diploma.map((data) => (
           <DiplomaCard

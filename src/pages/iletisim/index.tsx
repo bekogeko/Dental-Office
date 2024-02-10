@@ -23,8 +23,8 @@ const FeatureData = [
 function index() {
   return (
     <>
-      <Hero title="İletişim" description="" />
-      <div className="flex flex-col items-center gap-y-12">
+      <Hero title="İletişim" description="" active={false} />
+      <div className="items-cen ter flex flex-col items-center gap-y-12">
         <div className=" flex  flex-wrap items-center  justify-evenly gap-y-6  ">
           {FeatureData.map((data) => (
             <Features
@@ -34,8 +34,9 @@ function index() {
             />
           ))}
         </div>
+
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387270.8503218433!2d-122.41923659816238!3d37.774929498158886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807f71dd0001%3A0xe5a022b0b6524e9!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2suk!4v1588200668781!5m2!1sen!2suk"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.0658026017722!2d28.868484476769062!3d41.00193291981438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb489e95630d%3A0x70a714bbc5221dc6!2sMaster%20Dent%20Di%C5%9F%20Laboratuar%C4%B1!5e0!3m2!1str!2str!4v1707607621350!5m2!1str!2str"
           className="w-full max-w-7xl rounded-md"
           height={575}
           loading="lazy"

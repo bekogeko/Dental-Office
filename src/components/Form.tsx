@@ -1,16 +1,10 @@
-"use client";
-import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Switch } from "@headlessui/react";
 import Button from "./ui/Button";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
-  const [agreed, setAgreed] = useState(false);
-
+export default function Form() {
   return (
     <div className="isolate bg-white px-6 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
@@ -41,7 +35,7 @@ export default function Example() {
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
-                className="focus:border-sb-400 focus:ring-sb-400 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset  ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:border-shark-400 focus:ring-2 focus:ring-inset  focus:ring-shark-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -58,7 +52,7 @@ export default function Example() {
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
-                className="focus:border-sb-400 focus:ring-sb-400 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset  ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:border-shark-400 focus:ring-2 focus:ring-inset  focus:ring-shark-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -76,7 +70,7 @@ export default function Example() {
                 name="email"
                 id="email"
                 autoComplete="email"
-                className="focus:border-sb-400 focus:ring-sb-400 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset   ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400   focus:border-shark-400 focus:ring-2 focus:ring-inset  focus:ring-shark-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -95,7 +89,7 @@ export default function Example() {
                 <select
                   id="country"
                   name="country"
-                  className="focus:border-sb-500 focus:ring-sb-500 h-full rounded-md border-0  bg-transparent  bg-none pl-2 pr-9 text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm"
+                  className="h-full rounded-md border-0 bg-transparent bg-none  pl-2  pr-3 text-gray-400 focus:border-shark-500 focus:ring-2 focus:ring-inset  focus:ring-shark-500 sm:text-sm"
                 >
                   <option>US</option>
                   <option>CA</option>
@@ -107,7 +101,7 @@ export default function Example() {
                 name="phone-number"
                 id="phone-number"
                 autoComplete="tel"
-                className="focus:border-sb-400 focus:ring-sb-400 block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset  ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:border-shark-400 focus:ring-2 focus:ring-inset  focus:ring-shark-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -123,7 +117,7 @@ export default function Example() {
                 name="message"
                 id="message"
                 rows={4}
-                className="focus:border-sb-400 focus:ring-sb-400 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset   ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400   focus:border-shark-400 focus:ring-2 focus:ring-inset  focus:ring-shark-400 sm:text-sm sm:leading-6"
                 defaultValue={""}
               />
             </div>

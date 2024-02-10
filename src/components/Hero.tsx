@@ -7,8 +7,9 @@ import Navbar from "./Navbar";
 interface HeroProps {
   title: string;
   description: string;
+  active: boolean;
 }
-function Hero({ title, description }: HeroProps) {
+function Hero({ title, description, active }: HeroProps) {
   return (
     <>
       <div className="absolute z-20 flex  h-screen w-full flex-col items-center  justify-center  gap-y-6 bg-black  bg-opacity-50">
@@ -16,10 +17,13 @@ function Hero({ title, description }: HeroProps) {
           <h1 className=" text-4xl   font-light text-white">{title}</h1>
           <p className=" font-medium text-white">{description}</p>
         </div>
-        <Button variant="xl" href="/iletisim">
-          {" "}
-          İletişime Geç <span className="ml-6">&rarr;</span>
-        </Button>
+        {active ? (
+          <Button variant="xl" href="/iletisim">
+            İletişime Geç <span className="ml-6">&rarr;</span>
+          </Button>
+        ) : (
+          <div className="hidden">...</div>
+        )}
       </div>
       <Image
         src={BG}
