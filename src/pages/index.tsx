@@ -39,8 +39,9 @@ const Home: NextPage = () => {
       </Head>
       <main className=" flex flex-col gap-y-12">
         <Hero
-          title="hastalarımızın hayatlarını"
-          description="daha iyi hale getiriyoruz"
+          title="Kusursuz Gülüşler için Kusursuz Diş İmplantları"
+          description="Gülümsemeniz İçin Hızlı ve Özgün Çözümleri Ekonomik ve Estetik Diş İmplantlarıyla Fark Yaratıyoruz"
+          active={true}
         />
         <div className=" flex  flex-wrap items-center  justify-evenly gap-y-6  ">
           {FeatureData.map((data) => (

@@ -6,7 +6,7 @@ import ImageDescription from "~/components/ImageDescription";
 function Hakkımızda() {
   return (
     <div className="flex flex-col gap-y-32">
-      <Hero title="Hakkımızda" description="" />
+      <Hero title="Hakkımızda" description="" active={true} />
       <ImageDescription
         bg=""
         title="Hakkımızda"
